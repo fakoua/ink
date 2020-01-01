@@ -68,4 +68,6 @@ List all the available tags:
 ```bash
 deno https://raw.githubusercontent.com/fakoua/ink/master/mod.ts --list
 ```
+## License
 
+[MIT](LICENSE)
