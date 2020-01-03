@@ -63,7 +63,7 @@ Output: ![Output](https://via.placeholder.com/220x40/0000FF/FF0000/?text=Hello%2
 You can use the object terminal to call console.log, console.trace ... directly form ink module.
 
 ```ts
-import * as ink from 'https://raw.githubusercontent.com/fakoua/ink/master/mod.ts'
+import * as ink from 'https://deno.land/x/ink/mod.ts'
 
 ink.terminal.log('<red>Hello</red> %s', '<b>World</b>')
 ```
@@ -73,7 +73,7 @@ ink.terminal.log('<red>Hello</red> %s', '<b>World</b>')
 List all the available tags:
 
 ```bash
-deno https://raw.githubusercontent.com/fakoua/ink/master/mod.ts --list
+deno https://deno.land/x/ink/mod.ts --list
 ```
 
 ## License
