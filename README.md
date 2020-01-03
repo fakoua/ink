@@ -5,7 +5,7 @@ Terminal string color for Deno
 ## Examples
 
 ```ts
-import * as ink from 'https://raw.githubusercontent.com/fakoua/ink/master/mod.ts'
+import * as ink from 'https://deno.land/x/ink/mod.ts'
 
 let text = ink.colorize('<red>Hello World</red>')
 console.log(text)
@@ -20,7 +20,7 @@ Output:
 You can use nested style:
 
 ```ts
-import * as ink from 'https://raw.githubusercontent.com/fakoua/ink/master/mod.ts'
+import * as ink from 'https://deno.land/x/ink/mod.ts'
 
 let text = ink.colorize('<bg-blue><red>Hello World</bg-blue></red>')
 
