@@ -27,9 +27,7 @@ let text = ink.colorize('<bg-blue><red>Hello World</bg-blue></red>')
 console.log(text)
 ```
 
-Output: ![Output](https://via.placeholder.com/220x40/0000FF/FF0000/?text=Hello%20World)
-
-## Support tags
+## Support tags [Simple Mode]
 
 - &lt;b>: bold
 - &lt;i>: italic
@@ -68,13 +66,43 @@ import * as ink from 'https://deno.land/x/ink/mod.ts'
 ink.terminal.log('<red>Hello</red> %s', '<b>World</b>')
 ```
 
-## CLI
+## Advanced mode
 
-List all the available tags:
+You can use html like style for advanced and nested mode using the `ink` tag:
 
-```bash
-deno https://deno.land/x/ink/mod.ts --list
+```ts
+import * as ink from 'https://deno.land/x/ink/mod.ts'
+
+let result = ink.html("<ink style='color: #ff0000;font:bold;'>Hello World</ink>")
+console.log(result);
 ```
+
+Ink also supports nested styles:
+
+```ts
+let html = `
+<ink style="color: rgb(255, 0, 0); background-color: #00ff00;font: underline, bold">
+    I'm Red, background Green, underlined and bold! 
+    <ink style="background-color: rgb(0, 0, 0); font: italic;">
+        My BG is black again, but I'm italic :(
+    </ink>
+    My BG is Green Again!
+</ink>
+No Format here
+`
+
+let result = ink.html(html)
+console.log(result);
+```
+
+Output:
+IMAGE01
+
+### Supported Styles
+
+- **color**: Hex Or RGB [#ff0000, rgb(0, 255, 0) ...]
+- **background-color**: Hex Or RGB [#ff0000, rgb(0, 255, 0) ...]
+- **font**: comma separated values [bold, dim, italic, underline, inverse, hidden, strikethrough]
 
 ## License
 

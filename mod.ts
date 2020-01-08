@@ -1,72 +1,5 @@
-const tags = {
-    "<b>": 1,
-    "</b>": 22,
-    "<dim>": 2,
-    "</dim>": 22,
-    "<i>": 3,
-    "</i>": 23,
-    "<u>": 4,
-    "</u>": 24,
-    "<inv>": 7,
-    "</inv>": 27,
-    "<hidden>": 8,
-    "</hidden>": 28,
-    "<s>": 9,
-    "</s>": 29,
-    "<black>": 30,
-    "</black>": 39,
-    "<red>": 31,
-    "</red>": 39,
-    "<green>": 32,
-    "</green>": 39,
-    "<yellow>": 33,
-    "</yellow>": 39,
-    "<blue>": 34,
-    "</blue>": 39,
-    "<magenta>": 35,
-    "</magenta>": 39,
-    "<cyan>": 36,
-    "</cyan>": 39,
-    "<white>": 37,
-    "</white>": 39,
-    "<gray>": 90,
-    "</gray>": 39,
-    "<bg-black>": 40,
-    "</bg-black>": 49,
-    "<bg-red>": 41,
-    "</bg-red>": 49,
-    "<bg-green>": 42,
-    "</bg-green>": 49,
-    "<bg-yellow>": 43,
-    "</bg-yellow>": 49,
-    "<bg-blue>": 44,
-    "</bg-blue>": 49,
-    "<bg-magenta>": 45,
-    "</bg-magenta>": 49,
-    "<bg-cyan>": 40,
-    "</bg-cyan>": 46,
-    "<bg-white>": 47,
-    "</bg-white>": 49,
-
-}
-
-function processArgs(args) {
-    return args.map((value) => {
-            if (typeof value === 'string') {
-                return replacer(value)
-            } else {
-                return value
-            }
-        })
-}
-
-function replacer(input: string): string {
-    let output = input
-    Object.keys(tags).forEach(key=> {
-        output = output.replace(key, `\x1b[${tags[key]}m`)
-    })
-    return output
-}
+import { replacer, tags } from "./utils.ts"
+import { toAnsi } from "./htmlToAnsi.ts"
 
 export abstract class terminal {
     static log(...args): void {
@@ -95,7 +28,11 @@ export const colorize = function (input: string): string {
     return replacer(input)
 }
 
-export const list = function(): void {
+export const html = function (html: string): string {
+    return toAnsi(html);
+}
+
+export const list = function (): void {
     Object.keys(tags).forEach(key => {
         if (key.indexOf('/') < 0) {
             let tagName = key.replace("<", "").replace(">", "")
@@ -108,10 +45,21 @@ export const list = function(): void {
     })
 }
 
-if (Deno.args.length>1) {
+function processArgs(args) {
+    return args.map((value) => {
+        if (typeof value === 'string') {
+            return replacer(value)
+        } else {
+            return value
+        }
+    })
+}
+
+//CLI
+if (Deno.args.length > 1) {
     let cmd = Deno.args[1]
     cmd = cmd.replace('--', '').replace('-', '')
-    if (cmd=='list') {
+    if (cmd == 'list') {
         list()
     }
 }
