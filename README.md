@@ -77,7 +77,7 @@ let result = ink.html("<ink style='color: #ff0000;font:bold;'>Hello World</ink>"
 console.log(result);
 ```
 
-Ink also supports nested styles:
+**ink** also supports nested styles:
 
 ```ts
 let html = `
@@ -96,7 +96,8 @@ console.log(result);
 ```
 
 Output:
-IMAGE01
+
+![output](https://github.com/fakoua/ink/blob/master/forgit/img01.png)
 
 ### Supported Styles
 
