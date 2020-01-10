@@ -56,8 +56,8 @@ function processArgs(args) {
 }
 
 //CLI
-if (Deno.args.length > 1) {
-    let cmd = Deno.args[1]
+if (Deno.args.length == 1) {
+    let cmd = Deno.args[0]
     cmd = cmd.replace('--', '').replace('-', '')
     if (cmd == 'list') {
         list()
