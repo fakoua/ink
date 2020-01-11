@@ -1,6 +1,16 @@
 import { replacer, tags } from "./utils.ts"
 import { toAnsi } from "./htmlToAnsi.ts"
 
+declare global {
+    interface String {
+        toColor(): string
+    }
+}
+
+String.prototype.toColor = function (): string {
+    return html(this);
+}
+
 export abstract class terminal {
     static log(...args): void {
         args = processArgs(args)
@@ -44,6 +54,8 @@ export const list = function (): void {
         }
     })
 }
+
+//Extension
 
 function processArgs(args) {
     return args.map((value) => {

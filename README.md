@@ -99,6 +99,16 @@ Output:
 
 ![output](https://github.com/fakoua/ink/blob/master/forgit/img01.png)
 
+## String Extension
+
+`ink` also supports string extension:
+
+```ts
+import "https://deno.land/x/ink/mod.ts" //Import .toColor() extension
+
+console.log("<ink style='color: #ff0000; font: bold'>Hello Deno</ink>".toColor())
+```
+
 ### Supported Styles
 
 - **color**: Hex Or RGB [#ff0000, rgb(0, 255, 0) ...]
