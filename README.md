@@ -1,6 +1,9 @@
 # ink
 
-Terminal string color for Deno
+Terminal string color for deno
+
+[![Build Status](https://api.travis-ci.com/fakoua/ink.svg?branch=master)](https://travis-ci.com/fakoua/ink)
+[![Build Status](https://github.com/fakoua/ink/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/fakoua/ink/actions)
 
 ## Examples
 
