@@ -13,3 +13,8 @@ test(function test_extension() {
     assertEquals("deno".toColor(), "deno")
 })
 
+test(async function test_drawImage() {
+    //able to draw an image
+    await ink.drawImage("https://placekitten.com/10/10")
+    assertEquals(1, 1);
+})

@@ -1,5 +1,6 @@
 import { replacer, tags } from "./utils.ts"
 import { toAnsi } from "./htmlToAnsi.ts"
+export { drawImage } from "./imageToAnsi.ts"
 
 declare global {
     interface String {

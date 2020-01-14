@@ -118,6 +118,19 @@ console.log("<ink style='color: #ff0000; font: bold'>Hello Deno</ink>".toColor()
 - **background-color**: Hex Or RGB [#ff0000, rgb(0, 255, 0) ...]
 - **font**: comma separated values [bold, dim, italic, underline, inverse, hidden, strikethrough]
 
+## Draw Image
+
+Ink module also can draw a JPEG image from local or remote source into the terminal:
+
+```ts
+import * as ink from "./mod.ts"
+
+await ink.drawImage("https://placekitten.com/50/50")
+
+```
+
+IMAGE:
+
 ## License
 
 [MIT](LICENSE)
