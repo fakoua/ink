@@ -5,6 +5,12 @@ Terminal string color for deno
 [![Build Status](https://api.travis-ci.com/fakoua/ink.svg?branch=master)](https://travis-ci.com/fakoua/ink)
 [![Build Status](https://github.com/fakoua/ink/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/fakoua/ink/actions)
 
+## Run the welcome page for interactive demo:
+
+```bash
+deno -A https://deno.land/x/ink/welcome.ts
+```
+
 ## Examples
 
 ```ts
