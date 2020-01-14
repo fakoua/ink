@@ -80,7 +80,9 @@ export const tags = {
 export function replacer(input: string): string {
     let output = input
     Object.keys(tags).forEach(key=> {
-        output = output.replace(key, `\x1b[${tags[key]}m`)
+        let re = new RegExp(key, 'gi')
+        output = output.replace(re, `\x1b[${tags[key]}m`)
     })
+    output = output.replace(/\&lt\;/g, "<")
     return output
 }
