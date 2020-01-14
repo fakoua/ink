@@ -129,7 +129,7 @@ await ink.drawImage("https://placekitten.com/50/50")
 
 ```
 
-IMAGE:
+![output](https://github.com/fakoua/ink/blob/master/forgit/img02.png)
 
 ## License
 
