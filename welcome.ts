@@ -1,5 +1,6 @@
-import * as ink from './mod.ts'
 import './mod.ts'
+import * as ink from './mod.ts'
+
 
 function waitConsole(msg: string) {
     ink.terminal.log(`<blue>${msg}</blue>`)
