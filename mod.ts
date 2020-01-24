@@ -12,7 +12,7 @@ String.prototype.toColor = function (): string {
     return html(this);
 }
 
-export abstract class terminal {
+export class terminal {
     static log(...args): void {
         args = processArgs(args)
         console.log(...args)
