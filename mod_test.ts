@@ -18,3 +18,9 @@ test(async function test_drawImage() {
     await ink.drawImage("https://placekitten.com/10/10")
     assertEquals(1, 1);
 })
+
+test(async function test_terminal() {
+    //able to draw an image
+    await ink.terminal.log("h");
+    assertEquals(1, 1);
+})
