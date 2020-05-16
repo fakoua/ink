@@ -11,6 +11,7 @@ export async function drawImage(imagePath: string) {
         let res = await fetch(imagePath)
         let data = await res.body
         let tempRaw = new Uint8Array(1000000)
+        // @ts-ignore
         let rd = await data.read(tempRaw)
         raw = tempRaw.slice(0, rd as number)
     } else {

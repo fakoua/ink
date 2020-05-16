@@ -11,9 +11,12 @@ export enum NodeType {
  * Node Class as base class for TextNode and HTMLElement.
  */
 export abstract class Node {
+	//@ts-ignore
 	nodeType: NodeType;
 	childNodes = [] as Node[];
+	//@ts-ignore
 	text: string;
+	//@ts-ignore
 	rawText: string;
 	abstract toString(): String;
 }
@@ -94,8 +97,11 @@ function arr_back<T>(arr: T[]) {
  * @extends {Node}
  */
 export class HTMLElement extends Node {
+	//@ts-ignore
 	private _attrs: Attributes;
+	//@ts-ignore
 	private _rawAttrs: RawAttributes;
+	//@ts-ignore
 	public id: string;
 	public classNames = [] as string[];
 	/**
@@ -109,6 +115,7 @@ export class HTMLElement extends Node {
 	 *
 	 * @memberof HTMLElement
 	 */
+	//@ts-ignore
 	constructor(public tagName: string, keyAttrs: KeyAttributes, private rawAttrs = '', public parentNode = null as Node) {
 		super();
 		this.rawAttrs = rawAttrs || '';
@@ -171,6 +178,7 @@ export class HTMLElement extends Node {
 		const blocks = [currentBlock];
 		function dfs(node: Node) {
 			if (node.nodeType === NodeType.ELEMENT_NODE) {
+				//@ts-ignore
 				if (kBlockElements[(node as HTMLElement).tagName]) {
 					if (currentBlock.length > 0) {
 						blocks.push(currentBlock = []);
@@ -464,6 +472,7 @@ export class HTMLElement extends Node {
 		if (this.rawAttrs) {
 			const re = /\b([a-z][a-z0-9\-]*)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|(\S+)))?/ig;
 			let match: RegExpExecArray;
+			//@ts-ignore
 			while (match = re.exec(this.rawAttrs)) {
 				attrs[match[1]] = match[2] || match[3] || match[4] || "";
 			}
@@ -616,7 +625,9 @@ export class Matcher {
 				if (tagName[0] == '#') {
 					source += 'if (el.id != ' + JSON.stringify(tagName.substr(1)) + ') return false;';//1
 					function_name += '1';
-				} else if (matcher = tagName.match(/^\[\s*(\S+)\s*(=|!=)\s*((((["'])([^\6]*)\6))|(\S*?))\]\s*/)) {
+				}
+				//@ts-ignore 
+				else if (matcher = tagName.match(/^\[\s*(\S+)\s*(=|!=)\s*((((["'])([^\6]*)\6))|(\S*?))\]\s*/)) {
 					attr_key = matcher[1];
 					let method = matcher[2];
 					if (method !== '=' && method !== '!=') {
@@ -641,6 +652,7 @@ export class Matcher {
 			source += 'return true;';//5
 			function_name += '5';
 			let obj = {
+				//@ts-ignore
 				func: functionCache[function_name],
 				tagName: tagName || "",
 				classes: classes || "",
@@ -749,12 +761,14 @@ export function parse(data: string, options?: {
 	style?: boolean;
 	pre?: boolean;
 }) {
+	//@ts-ignore
 	const root = new HTMLElement(null, {});
 	let currentParent = root;
 	const stack = [root];
 	let lastTextPos = -1;
 	options = options || {} as any;
 	let match: RegExpExecArray;
+	//@ts-ignore
 	while (match = kMarkupPattern.exec(data)) {
 		if (lastTextPos > -1) {
 			if (lastTextPos + match[0].length < kMarkupPattern.lastIndex) {
@@ -768,16 +782,20 @@ export function parse(data: string, options?: {
 			// this is a comment
 			continue;
 		}
+		//@ts-ignore
 		if (options.lowerCaseTagName)
 			match[2] = match[2].toLowerCase();
 		if (!match[1]) {
 			// not </ tags
 			let attrs = {};
 			for (let attMatch; attMatch = kAttributePattern.exec(match[3]);) {
+				//@ts-ignore
 				attrs[attMatch[2]] = attMatch[4] || attMatch[5] || attMatch[6];
 			}
 
+			//@ts-ignore
 			if (!match[4] && kElementsClosedByOpening[currentParent.tagName]) {
+				//@ts-ignore
 				if (kElementsClosedByOpening[currentParent.tagName][match[2]]) {
 					stack.pop();
 					currentParent = arr_back(stack);
@@ -786,10 +804,12 @@ export function parse(data: string, options?: {
 			currentParent = currentParent.appendChild(
 				new HTMLElement(match[2], attrs, match[3]));
 			stack.push(currentParent);
+			//@ts-ignore
 			if (kBlockTextElements[match[2]]) {
 				// a little test to find next </script> or </style> ...
 				let closeMarkup = '</' + match[2] + '>';
 				let index = data.indexOf(closeMarkup, kMarkupPattern.lastIndex);
+				//@ts-ignore
 				if (options[match[2]]) {
 					let text: string;
 					if (index == -1) {
@@ -811,6 +831,7 @@ export function parse(data: string, options?: {
 			}
 		}
 		if (match[1] || match[4] ||
+			//@ts-ignore
 			kSelfClosingElements[match[2]]) {
 			// </ or /> or <br> etc.
 			while (true) {
@@ -820,7 +841,9 @@ export function parse(data: string, options?: {
 					break;
 				} else {
 					// Trying to close current tag, and move on
+					//@ts-ignore
 					if (kElementsClosedByClosing[currentParent.tagName]) {
+						//@ts-ignore
 						if (kElementsClosedByClosing[currentParent.tagName][match[2]]) {
 							stack.pop();
 							currentParent = arr_back(stack);
@@ -835,6 +858,7 @@ export function parse(data: string, options?: {
 	}
 	type Response = (HTMLElement | TextNode) & { valid: boolean; };
 	const valid = !!(stack.length === 1);
+	//@ts-ignore
 	if (!options.noFix) {
 		const response = root as Response;
 		response.valid = valid;
@@ -842,17 +866,23 @@ export function parse(data: string, options?: {
 			// Handle each error elements.
 			const last = stack.pop();
 			const oneBefore = arr_back(stack);
+			//@ts-ignore
 			if (last.parentNode && (last.parentNode as HTMLElement).parentNode) {
+				//@ts-ignore
 				if (last.parentNode === oneBefore && last.tagName === oneBefore.tagName) {
 					// Pair error case <h3> <h3> handle : Fixes to <h3> </h3>
+					//@ts-ignore
 					oneBefore.removeChild(last);
+					//@ts-ignore
 					last.childNodes.forEach((child) => {
 						(oneBefore.parentNode as HTMLElement).appendChild(child);
 					});
 					stack.pop();
 				} else {
 					// Single error  <div> <h3> </div> handle: Just removes <h3>
+					//@ts-ignore
 					oneBefore.removeChild(last);
+					//@ts-ignore
 					last.childNodes.forEach((child) => {
 						oneBefore.appendChild(child);
 					});
@@ -863,6 +893,7 @@ export function parse(data: string, options?: {
 		}
 		response.childNodes.forEach((node) => {
 			if (node instanceof HTMLElement) {
+				//@ts-ignore
 				node.parentNode = null;
 			}
 		});

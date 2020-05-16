@@ -1,25 +1,25 @@
 import * as ink from './mod.ts'
 import './mod.ts'
 
-import { test, assertEquals } from './test_deps.ts'
+import { assertEquals } from './test_deps.ts'
 
-test( function test_output() {
+Deno.test("test_output", function () {
     ink.list()
     let text = ink.colorize('<red>hello</red>')
     assertEquals(text, '\x1b[31mhello\x1b[39m')
 });
 
-test(function test_extension() {
+Deno.test("test_extension", function () {
     assertEquals("deno".toColor(), "deno")
 })
 
-test(async function test_drawImage() {
+Deno.test("test_drawImage", async function () {
     //able to draw an image
     await ink.drawImage("https://placekitten.com/10/10")
     assertEquals(1, 1);
 })
 
-test(async function test_terminal() {
+Deno.test("test_terminal", async function () {
     //able to draw an image
     await ink.terminal.log("h");
     assertEquals(1, 1);

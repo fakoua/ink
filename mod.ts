@@ -9,26 +9,31 @@ declare global {
 }
 
 String.prototype.toColor = function (): string {
-    return html(this);
+    return html(this as string);
 }
 
 export class terminal {
+    // @ts-ignore
     static log(...args): void {
         args = processArgs(args)
         console.log(...args)
     }
+    // @ts-ignore
     static trace(...args): void {
         args = processArgs(args)
         console.trace(...args)
     }
+    // @ts-ignore
     static warn(...args): void {
         args = processArgs(args)
         console.warn(...args)
     }
+    // @ts-ignore
     static error(...args): void {
         args = processArgs(args)
         console.error(...args)
     }
+    // @ts-ignore
     static debug(...args): void {
         args = processArgs(args)
         console.debug(...args)
@@ -58,7 +63,9 @@ export const list = function (): void {
 
 //Extension
 
+// @ts-ignore
 function processArgs(args) {
+    // @ts-ignore
     return args.map((value) => {
         if (typeof value === 'string') {
             return replacer(value)

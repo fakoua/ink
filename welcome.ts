@@ -4,9 +4,9 @@ import * as ink from './mod.ts'
 
 function waitConsole(msg: string) {
     ink.terminal.log(`<blue>${msg}</blue>`)
-    let p = new Uint8Array(100);
-    Deno.stdin.readSync(p)
-    console.log('\x1b[2J');
+    //let p = new Uint8Array(100);
+    //Deno.readSync(Deno.stdin.rid, p)
+    //console.log('\x1b[2J');
 }
 
 function writeInfo(msg: string) {
