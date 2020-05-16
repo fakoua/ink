@@ -18,4 +18,4 @@ jobs:
 
     steps:
       - checkout
-      - run: deno -A test.ts
+      - run: deno test -A
