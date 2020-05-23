@@ -8,7 +8,7 @@ Terminal string color for deno
 ## Run the welcome page for interactive demo:
 
 ```bash
-deno -A https://deno.land/x/ink/welcome.ts
+deno run -A https://deno.land/x/ink/welcome.ts
 ```
 
 ## Examples
