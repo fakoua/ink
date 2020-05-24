@@ -106,7 +106,7 @@ console.log(result);
 
 Output:
 
-![output](https://github.com/fakoua/ink/blob/master/forgit/img01.png)
+![output](forgit/img01.png)
 
 ## String Extension
 
@@ -135,7 +135,7 @@ await ink.drawImage("https://placekitten.com/50/50")
 
 ```
 
-![output](https://github.com/fakoua/ink/blob/master/forgit/img02.png)
+![output](forgit/img02.png)
 
 ## License
 
