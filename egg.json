@@ -1,0 +1,21 @@
+{
+    "name": "Ink",
+    "description": "Terminal string color for deno.",
+    "stable": true,
+    "files": [
+        "./htmlToAnsi.ts",
+        "./imageToAnsi.ts",
+        "./LICENSE.ts",
+        "./mod.ts",
+        "./mod_test.ts",
+        "./README.md",
+        "./test.ts",
+        "./test_deps.ts",
+        "./utils.ts",
+        "./utils_test.ts",
+        "./welcome.ts",
+        "./forgit/**/*",
+        "./models/**/*",
+        "./tsdom/**/*"
+    ]
+}
