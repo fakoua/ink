@@ -103,7 +103,6 @@ ink.terminal.log('   <red>await</red> ink.<magenta>drawImage</magenta>(<yellow>"
 ink.terminal.log("<b>Output:</b>")
 await ink.drawImage("https://placekitten.com/50/50")
 
-
 waitConsole("Press Enter to continue ...")
 ink.terminal.log("<b>For more information please visit:</b> https://github.com/fakoua/ink")
 console.log("\n\r");

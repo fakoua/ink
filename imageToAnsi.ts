@@ -9,11 +9,9 @@ export async function drawImage(imagePath: string) {
 
     if (isUrl(imagePath)) {
         let res = await fetch(imagePath)
-        let data = await res.body
-        let tempRaw = new Uint8Array(1000000)
-        // @ts-ignore
-        let rd = await data.read(tempRaw)
-        raw = tempRaw.slice(0, rd as number)
+        let blob  = await res.blob();
+        raw = new Uint8Array(await blob.arrayBuffer())
+
     } else {
         raw = await Deno.readFile(imagePath)
     }
