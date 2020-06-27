@@ -8,10 +8,10 @@ export function toAnsi(html: string): string {
     data = data.trim()
     const root = parse(data)
     if (root instanceof HTMLElement) {
-        let res = getInked(root.firstChild);
+        const res = getInked(root.firstChild);
         return res;
     }    
-    return html; //in case of error
+    return html; // in case of error
 }
 
 function getInked(n: Node, parentAnsiStart: string = ""): string {
@@ -21,10 +21,10 @@ function getInked(n: Node, parentAnsiStart: string = ""): string {
             rtnVal += el.text
         }
         if (el instanceof HTMLElement) {
-            let style = el.attributes.style
+            const style = el.attributes.style
             StyleParser.parse(style);
-            let ansiStart = StyleParser.toAnsiStart()
-            let ansiEnd = `${StyleParser.toAnsiEnd()}${parentAnsiStart}`
+            const ansiStart = StyleParser.toAnsiStart()
+            const ansiEnd = `${StyleParser.toAnsiEnd()}${parentAnsiStart}`
 
             rtnVal += `${ansiStart}${getInked(el, ansiStart)}${ansiEnd}`
         }

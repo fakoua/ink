@@ -1,4 +1,4 @@
-import {  assertEquals } from './test_deps.ts'
+import {  assertEquals } from "./test_deps.ts"
 import * as utils from "./utils.ts"
 
 Deno.test("test_utils_hexToAnsi", function () {
@@ -22,8 +22,8 @@ Deno.test("test_utils_rgbToAnsi", function () {
 
 Deno.test("test_utils_rgbLoop", function () {
     for (let r = 0; r < 256; r++) {
-        let rgbCalculated = utils.rgbToAnsi(`rgb(${r}, 0, 0)`)
-        let rgbReal = {r: r, g: 0, b: 0}
+        const rgbCalculated = utils.rgbToAnsi(`rgb(${r}, 0, 0)`)
+        const rgbReal = {r: r, g: 0, b: 0}
         assertEquals(rgbCalculated, rgbReal)
     }
 })

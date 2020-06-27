@@ -1,10 +1,10 @@
 import { StyleBase } from "./StyleBase.ts";
 
-type FontStyleType = {
+interface FontStyleType {
   mode: string;
   ansiStartCode: number;
   ansiEndCode: number;
-};
+}
 
 export class FontStyle extends StyleBase {
   private fonts: Array<FontStyleType> = [
@@ -49,10 +49,10 @@ export class FontStyle extends StyleBase {
 
   private modeToAnsi(mode: string): { start: string; end: string } {
     mode = mode.trim().toLowerCase();
-    let f = this.fonts.find((f) => {
-      return f.mode == mode;
+    const f = this.fonts.find((ff) => {
+      return ff.mode === mode;
     });
-    if (f == undefined) {
+    if (f === undefined) {
       return {
         start: "",
         end: "",

@@ -1,25 +1,25 @@
 export const rgbToAnsi = function (rgb: string): { r: number, g: number, b: number } {
     rgb = normalizeColorString(rgb)
-    let result = /^rgb\((\d+)\,(\d+)\,(\d+)\)$/i.exec(rgb);
+    const result = /^rgb\((\d+)\,(\d+)\,(\d+)\)$/i.exec(rgb);
     return {
-        //@ts-ignore
-        r: parseInt(result[1]),
-        //@ts-ignore
-        g: parseInt(result[2]),
-        //@ts-ignore
-        b: parseInt(result[3]),
+        // @ts-ignore
+        r: parseInt(result[1], 10),
+        // @ts-ignore
+        g: parseInt(result[2], 10),
+        // @ts-ignore
+        b: parseInt(result[3], 10),
     }
 }
 
 export const hexToAnsi = function (hex: string): { r: number, g: number, b: number } {
     hex = normalizeColorString(hex)
-    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return {
-        //@ts-ignore
+        // @ts-ignore
         r: parseInt(result[1], 16),
-        //@ts-ignore
+        // @ts-ignore
         g: parseInt(result[2], 16),
-        //@ts-ignore
+        // @ts-ignore
         b: parseInt(result[3], 16),
     }
 }
@@ -85,9 +85,9 @@ export const tags = {
 
 export function replacer(input: string): string {
     let output = input
-    Object.keys(tags).forEach(key=> {
-        let re = new RegExp(key, 'gi')
-        //@ts-ignore
+    Object.keys(tags).forEach(key => {
+        const re = new RegExp(key, "gi")
+        // @ts-ignore
         output = output.replace(re, `\x1b[${tags[key]}m`)
     })
     output = output.replace(/\&lt\;/g, "<")

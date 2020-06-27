@@ -45,7 +45,7 @@ export abstract class StyleParser {
     }
 
     static parse(style: string): void {
-        let styles = style.split(";")
+        const styles = style.split(";")
         styles.forEach(element => {
             this.parseSubStyle(element)
         });
@@ -54,9 +54,9 @@ export abstract class StyleParser {
     private static parseSubStyle(subStyle: string) {
         subStyle = subStyle.trim();
         if (subStyle !== "") {
-            let st = subStyle.split(":")
-            let name = st[0].trim();
-            let value = st[1].trim();
+            const st = subStyle.split(":")
+            const name = st[0].trim();
+            const value = st[1].trim();
 
             switch (name.toLowerCase()) {
                 case "color":

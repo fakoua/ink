@@ -1,3 +1,5 @@
+/* tslint:disable */
+
 function decode(input: string): string {
     return input;
 }

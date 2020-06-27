@@ -12,6 +12,7 @@ String.prototype.toColor = function (): string {
     return html(this as string);
 }
 
+// tslint:disable-next-line
 export class terminal {
     // @ts-ignore
     static log(...args): void {
@@ -44,16 +45,16 @@ export const colorize = function (input: string): string {
     return replacer(input)
 }
 
-export const html = function (html: string): string {
-    return toAnsi(html);
+export const html = function (htm: string): string {
+    return toAnsi(htm);
 }
 
 export const list = function (): void {
     Object.keys(tags).forEach(key => {
-        if (key.indexOf('/') < 0) {
-            let tagName = key.replace("<", "").replace(">", "")
-            let tagStart = `<${tagName}>`
-            let tagEnd = `</${tagName}>`
+        if (key.indexOf("/") < 0) {
+            const tagName = key.replace("<", "").replace(">", "")
+            const tagStart = `<${tagName}>`
+            const tagEnd = `</${tagName}>`
             let text = `-->${tagStart}tag: ${tagName}${tagEnd}`
             text = replacer(text)
             console.log(text)
@@ -61,13 +62,13 @@ export const list = function (): void {
     })
 }
 
-//Extension
+// Extension
 
 // @ts-ignore
 function processArgs(args) {
     // @ts-ignore
     return args.map((value) => {
-        if (typeof value === 'string') {
+        if (typeof value === "string") {
             return replacer(value)
         } else {
             return value
@@ -75,11 +76,11 @@ function processArgs(args) {
     })
 }
 
-//CLI
-if (Deno.args.length == 1) {
+// CLI
+if (Deno.args.length === 1) {
     let cmd = Deno.args[0]
-    cmd = cmd.replace('--', '').replace('-', '')
-    if (cmd == 'list') {
+    cmd = cmd.replace("--", "").replace("-", "")
+    if (cmd === "list") {
         list()
     }
 }

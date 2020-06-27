@@ -8,10 +8,10 @@ export class ColorStyle extends StyleBase {
     }
 
     ansiStart(): string {
-        let rgb = this.rules.indexOf("rgb") >= 0 ? rgbToAnsi(this.rules) : hexToAnsi(this.rules);
+        const rgb = this.rules.indexOf("rgb") >= 0 ? rgbToAnsi(this.rules) : hexToAnsi(this.rules);
         return `\x1b[38;2;${rgb.r};${rgb.g};${rgb.b}m`
     }
     ansiEnd(): string {
-        return '\x1b[39m';
+        return "\x1b[39m";
     }
 }
