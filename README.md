@@ -2,9 +2,10 @@
 
 Terminal string color for deno
 
-[![Build Status](https://api.travis-ci.com/fakoua/ink.svg?branch=master)](https://travis-ci.com/fakoua/ink)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffakoua%2Fink.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffakoua%2Fink?ref=badge_shield)
-[![Build Status](https://github.com/fakoua/ink/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/fakoua/ink/actions)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fakoua/ink?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/fakoua/ink?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/fakoua/ink?style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/fakoua/ink/Deno%20CI?style=for-the-badge)
 
 ## Run the welcome page for interactive demo:
 
