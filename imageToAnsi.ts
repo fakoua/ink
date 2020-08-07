@@ -1,4 +1,4 @@
-import { decode, Pixel, Image } from "https://deno.land/x/jpeg.ts/mod.ts"
+import { decode, Pixel, Image } from "https://deno.land/x/jpegts@v1.0/mod.ts"
 
 /**
  * draw an image to the terminal.
