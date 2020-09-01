@@ -42,6 +42,7 @@ export class TextNode extends Node {
 	 * Get unescaped text value of current node and its children.
 	 * @return {string} text content
 	 */
+	//@ts-ignore
 	get text() {
 		return decode(this.rawText);
 	}
@@ -158,6 +159,7 @@ export class HTMLElement extends Node {
 	 * Get escpaed (as-it) text value of current node and its children.
 	 * @return {string} text content
 	 */
+	//@ts-ignore
 	get rawText() {
 		let res = '';
 		for (let i = 0; i < this.childNodes.length; i++)
@@ -168,6 +170,7 @@ export class HTMLElement extends Node {
 	 * Get unescaped text value of current node and its children.
 	 * @return {string} text content
 	 */
+	//@ts-ignore
 	get text() {
 		return decode(this.rawText);
 	}
