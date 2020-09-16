@@ -1,4 +1,4 @@
-import { IStyleBase } from "./IStyleBase.ts";
+import type { IStyleBase } from "./IStyleBase.ts";
 import { normalizeColorString } from "../utils.ts";
 
 export class StyleBase implements IStyleBase {
