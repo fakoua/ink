@@ -77,7 +77,7 @@ function processArgs(args) {
 }
 
 // CLI
-if (Deno.args.length === 1) {
+if (import.meta.main && Deno.args.length === 1) {
     let cmd = Deno.args[0]
     cmd = cmd.replace("--", "").replace("-", "")
     if (cmd === "list") {
